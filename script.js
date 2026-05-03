@@ -9,12 +9,14 @@ function resetGame() {
   render();
 }
 
+//RECURSION SECTION
 function hanoi(n, from, to, aux, moves) {
-  if (n === 0) return;
-  hanoi(n - 1, from, aux, to, moves);
-  moves.push({ disk: n, from, to });
-  hanoi(n - 1, aux, to, from, moves);
+  if (n === 0) return;              // base case- stops recursion
+  hanoi(n - 1, from, aux, to, moves); // recursive call 1
+  moves.push({ disk: n, from, to });  // record the move
+  hanoi(n - 1, aux, to, from, moves); // recursive call 2
 }
+//END RECURSION
 
 function sleep(ms) {
   return new Promise(r => setTimeout(r, ms));
@@ -24,12 +26,15 @@ async function startSolve() {
   resetGame();
   const moves = [];
   hanoi(nDisks, 0, 2, 1, moves);
+
+  //ITERATION SECTION
   for (let i = 0; i < moves.length; i++) {
     const { from, to } = moves[i];
     pegs[to].push(pegs[from].pop());
     render();
     await sleep(500);
   }
+  //END ITERATION
 }
 
 function render() {
@@ -69,8 +74,8 @@ function render() {
       ctx.font = 'bold 13px monospace';
       ctx.textAlign = 'center';
       ctx.fillText(d, px, dy + diskH - 8);
+      
     });
-
     ctx.fillStyle = '#aaa';
     ctx.font = '14px monospace';
     ctx.textAlign = 'center';
