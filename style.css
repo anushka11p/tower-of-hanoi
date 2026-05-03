@@ -1,0 +1,32 @@
+body {
+  background: #0f0f1a;
+  color: white;
+  font-family: monospace;
+  text-align: center;
+  padding: 20px;
+}
+
+h1 {
+  color: #39ff14;
+}
+
+button {
+  margin: 10px 5px;
+  padding: 8px 20px;
+  background: #1a1a2e;
+  color: #39ff14;
+  border: 1px solid #39ff14;
+  font-family: monospace;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background: #39ff14;
+  color: #000;
+}
+
+canvas {
+  border: 1px solid #333;
+  border-radius: 6px;
+}
